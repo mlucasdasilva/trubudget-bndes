@@ -1,18 +1,17 @@
 FROM  node:10.15.1-jessie
 
-ADD . /trubudget-bndes
+ADD . /trubudget
 
-WORKDIR /trubudget-bndes
+WORKDIR /trubudget
 
 RUN cp config/config.json.PRD config/config.json && \
     cp control/executionData.json.INSTALL control/executionData.json 
 
 RUN npm install
 
-VOLUME [ "/trubudget-bndes/data" , "/trubudget-bndes/log" ]
+VOLUME [ "/trubudget/data" , "/trubudget/log" , "/trubudget/control" ]
 
 
-
-CMD [ "npm" , "start" , "execution" ]
+CMD [ "npm" , "start" ]
 
 
